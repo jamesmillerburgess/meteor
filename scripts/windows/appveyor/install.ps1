@@ -16,7 +16,7 @@ If ($LASTEXITCODE -ne 0) {
 }
 
 # The `meteor --get-ready` command is susceptible to EPERM errors, so 
-# we attempt it three times.#
+# we attempt it three times.
 $attempt = 3
 $success = $false
 while ($attempt -gt 0 -and -not $success) {
