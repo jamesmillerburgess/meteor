@@ -5,7 +5,9 @@ cd ../..
 export METEOR_HOME=`pwd`
 
 # Just in case these packages haven't been installed elsewhere.
-./meteor npm install -g phantomjs-prebuilt browserstack-webdriver
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+./meteor npm install -g chromedriver browserstack-webdriver
 
 export PATH=$METEOR_HOME:$PATH
 # synchronously get the dev bundle and NPM modules if they're not there.
