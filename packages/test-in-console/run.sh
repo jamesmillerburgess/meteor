@@ -6,7 +6,7 @@ export METEOR_HOME=`pwd`
 
 # Just in case these packages haven't been installed elsewhere.
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 ./meteor npm install -g chromedriver browserstack-webdriver
 
 export PATH=$METEOR_HOME:$PATH
