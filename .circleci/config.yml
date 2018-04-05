@@ -124,8 +124,8 @@ jobs:
             for d in packages/*/.npm/plugin/*; do cat $d/npm-shrinkwrap.json >> shrinkwraps.txt; done
       - restore_cache:
           keys:
-            - package-npm-deps-cache-v2-wip-{{ checksum "shrinkwraps.txt" }}
-            - package-npm-deps-cache-v2-wip
+            - package-npm-deps-cache-v3-wip-{{ checksum "shrinkwraps.txt" }}
+            - package-npm-deps-cache-v3-wip
       - restore_cache:
           keys:
             - other-deps-cache-{{ .Branch }}-{{ .Revision }}
@@ -716,7 +716,7 @@ jobs:
       # `MetadataTooLarge` error that consistently appears if we put all of
       # these folders in the same cache
       - save_cache:
-          key: package-npm-deps-cache-v2-wip-{{ checksum "shrinkwraps.txt" }}
+          key: package-npm-deps-cache-v3-wip-{{ checksum "shrinkwraps.txt" }}
           paths:
             - ~/.npm
       - save_cache:
