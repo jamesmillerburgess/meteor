@@ -718,7 +718,7 @@ jobs:
       - save_cache:
           key: package-npm-deps-cache-v2-wip-{{ checksum "shrinkwraps.txt" }}
           paths:
-            - ./.npm
+            - ~/.npm
       - save_cache:
           key: other-deps-cache-{{ .Branch }}-{{ .Revision }}
           paths:
