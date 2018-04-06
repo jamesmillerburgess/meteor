@@ -1130,7 +1130,6 @@ var installFromShrinkwrap = function (dir) {
   }
 
   // `npm ci`, which reads npm-shrinkwrap.json.
-  throw new Error('npm ci');
   var result = runNpmCommand(["ci"], dir);
 
   if (! result.success) {
