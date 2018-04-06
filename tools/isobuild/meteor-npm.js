@@ -1126,11 +1126,12 @@ firstTen.join("\n"));
 var installFromShrinkwrap = function (dir) {
   if (! files.exists(files.pathJoin(dir, "npm-shrinkwrap.json"))) {
     throw new Error(
-      "Can't call `npm install` without a npm-shrinkwrap.json file present");
+      "Can't call `npm ci` without a npm-shrinkwrap.json file present");
   }
 
-  // `npm install`, which reads npm-shrinkwrap.json.
-  var result = runNpmCommand(["install"], dir);
+  // `npm ci`, which reads npm-shrinkwrap.json.
+  throw new Error('npm ci');
+  var result = runNpmCommand(["ci"], dir);
 
   if (! result.success) {
     buildmessage.error(
