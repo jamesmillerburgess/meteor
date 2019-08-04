@@ -1,6 +1,5 @@
-import { max } from 'underscore';
 import os from 'os';
-const utils = require('./utils');
+import * as utils from './utils';
 
 /* Meteor's current architecture scheme defines the following virtual
  * machine types, which are defined by specifying what is promised by
@@ -143,9 +142,9 @@ export const VALID_ARCHITECTURES: Record<string, boolean> = {
 // If you change this, also change scripts/admin/launch-meteor
 let _host: string | null = null; // memoize
 
-export function host() {
+export function host(): string {
   if (!_host) {
-    const run = function (...args: Array<string | boolean>) {
+    const run = function (...args: Array<string | boolean>): string {
       const result = utils.execFileSync(args[0], args.slice(1)).stdout;
 
       if (! result) {
@@ -274,7 +273,12 @@ export function leastSpecificDescription(programs: string[]): string {
   }
 
   // Find the longest string
-  const longest = max(programs, (p: string) => p.length);
+  let longest = programs[0];
+  for (let i = 1; i < programs.length; i++) {
+    if (programs[i].length > longest.length) {
+      longest = programs[i];
+    }
+  }
 
   // If everything else in the list is compatible with the longest,
   // then it must be the most specific, and if everything is

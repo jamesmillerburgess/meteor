@@ -146,7 +146,7 @@ exports.printPackageList = function (items, options) {
 exports.getHost = function (...args) {
   var ret;
   var attempt = function (...args) {
-    var output = exports.execFileSync(args[0], args.slice(1)).stdout;
+    var output = execFileSync(args[0], args.slice(1)).stdout;
     if (output) {
       ret = output.trim();
     }
@@ -530,7 +530,7 @@ exports.isValidVersion = function (version, {forCordova}) {
 };
 
 
-exports.execFileSync = function (file, args, opts) {
+export function execFileSync(file, args, opts) {
   var child_process = require('child_process');
   var { eachline } = require('./eachline');
 
@@ -598,7 +598,7 @@ exports.runGitInCheckout = function (...args) {
     '--git-dir=' +
     files.convertToOSPath(files.pathJoin(files.getCurrentToolsDir(), '.git')));
 
-  return exports.execFileSync('git', args).stdout;
+  return execFileSync('git', args).stdout;
 };
 
 exports.Throttled = function (options) {
